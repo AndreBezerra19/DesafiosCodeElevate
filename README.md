@@ -17,7 +17,9 @@
 
 ### 1 - *Diário de bordo*
 
-#### 📌 Objetivo do Projeto
+### 2 - *Monitoramento de sensores IoT*
+
+#### 📌 Objetivo
 
 Este projeto tem como objetivo criar um sistema de monitoramento de sensores IoT, utilizando Apache Kafka para transmissão de dados em tempo real e DuckDB para armazenamento e análise. O fluxo de dados segue os seguintes passos:
 
@@ -44,4 +46,4 @@ Este projeto tem como objetivo criar um sistema de monitoramento de sensores IoT
     
       3️⃣ Rodar o Producer
         O Producer gera dados de sensores simulados e os envia para o Kafka.
-### 2 - *Monitoramento de sensores IoT*
+
