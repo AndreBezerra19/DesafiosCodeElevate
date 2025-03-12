@@ -4,7 +4,7 @@ import pandas as pd
 
 # Paths
 file_path = "/Users/andrebezerra/Desktop/Dev/DesafiosCodeElevate/diario_de_bordo/info_transportes.csv"
-db_path = "/Users/andrebezerra/Desktop/Dev/DesafiosCodeElevate/db_desafios.duckdb"
+db_path = "/Users/andrebezerra/Desktop/Dev/DesafiosCodeElevate/desafios.duckdb"
 
 # Read file
 transportes = pd.read_csv(file_path, sep=";")

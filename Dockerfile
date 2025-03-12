@@ -1,12 +1,12 @@
-FROM python:3.9
+FROM python:3.10-slim
 
 WORKDIR /app
 
-COPY requirements.txt requirements.txt
+COPY . .
+
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY producer.py consumer.py /app/
-COPY dags /opt/airflow/dags/
-COPY dados /opt/airflow/dados/
+ENV DIARIO_DIR=/app/diario_de_bordo
+ENV SENSORES_DIR=/app/sensores
 
-CMD ["tail", "-f", "/dev/null"]
+CMD ["airflow", "standalone"]

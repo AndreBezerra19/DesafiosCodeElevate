@@ -5,7 +5,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import substring, count, col, when, desc, min, max, sum, round, to_date, date_format
 
 # Parameters
-db_path = "/Users/andrebezerra/Desktop/Dev/DesafiosCodeElevate/db_desafios.duckdb"
+db_path = "/Users/andrebezerra/Desktop/Dev/DesafiosCodeElevate/desafios.duckdb"
 table_name = "b_info_transportes"
 schema = "diario_de_bordo"
 
