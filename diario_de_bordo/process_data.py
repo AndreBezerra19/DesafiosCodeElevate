@@ -4,18 +4,18 @@ import pandas as pd
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import substring, count, col, when, desc, min, max, sum, round, to_date, date_format
 
-# Parameters
-db_path = "/Users/andrebezerra/Desktop/Dev/DesafiosCodeElevate/desafios.duckdb"
+# Parametros
+db_path = "/app/desafios.duckdb"
 table_name = "b_info_transportes"
 schema = "diario_de_bordo"
 
 # Database connection
 con = duckdb.connect(db_path)
 
-# Read table using pandas
+# Ler tabela usando Pandas
 df = con.execute(f"SELECT * FROM {schema}.{table_name}").fetchdf()
 
-# date information and conversion
+# Conversao do campo data
 df["DATA_INICIO"] = df["DATA_INICIO"].str.split(" ").str[0]  # get only date
 df["DATA_INICIO"] = pd.to_datetime(df["DATA_INICIO"], format="%m-%d-%Y").dt.strftime("%Y-%m-%d")
 
@@ -41,11 +41,11 @@ df_resultado = df_spark.groupBy("DATA_INICIO").agg(
     count(when((col("PROPOSITO").isNotNull()) & (~col("PROPOSITO").isin("Reunião")), True)).alias("QT_CORR_NAO_REUNI")      # Travels with a stated purpose other than "Reunião".  
 ).orderBy(col("DATA_INICIO").desc())
 
-# Save into DuckDB on correct schema
+# Salvar dados no schema indicado
 pd_resultados = df_resultado.toPandas()
 con = duckdb.connect(db_path)
 
-# Create table
+# Criar tabela
 con.execute("""
     CREATE TABLE IF NOT EXISTS diario_de_bordo.s_info_corridas_do_dia (
         DATA_INICIO DATE,
@@ -60,9 +60,9 @@ con.execute("""
     )
 """)
 
-con.register("temp_table", pd_resultados)  # Register DF like temp table
+con.register("temp_table", pd_resultados)  # Registrar DF como temp table
 
-# insert data into table
+# inserir dados na tabela
 con.execute("""
     INSERT INTO diario_de_bordo.s_info_corridas_do_dia 
     SELECT * FROM temp_table

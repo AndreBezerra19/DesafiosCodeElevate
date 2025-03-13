@@ -3,8 +3,8 @@ import duckdb
 import pandas as pd
 
 # Paths
-file_path = "/Users/andrebezerra/Desktop/Dev/DesafiosCodeElevate/diario_de_bordo/info_transportes.csv"
-db_path = "/Users/andrebezerra/Desktop/Dev/DesafiosCodeElevate/desafios.duckdb"
+file_path = "/app/diario_de_bordo/info_transportes.csv"
+db_path = "/app/desafios.duckdb"
 
 # Read file
 transportes = pd.read_csv(file_path, sep=";")
