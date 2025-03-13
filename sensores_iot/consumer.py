@@ -3,11 +3,11 @@ import duckdb
 from confluent_kafka import Consumer, KafkaException
 
 # Definir o caminho do banco de dados
-db_path = "DesafiosCodeElevate/db_desafios.duckdb"
+db_path = "/app/desafios.duckdb"
 
 # Configuração do Kafka
 kafka_config = {
-    "bootstrap.servers": "localhost:9092",
+    "bootstrap.servers": "kafka:9092",  # Conexão no Docker
     "group.id": "iot_consumer_group",
     "auto.offset.reset": "earliest"
 }

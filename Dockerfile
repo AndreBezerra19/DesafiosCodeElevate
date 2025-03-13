@@ -6,12 +6,15 @@ WORKDIR /app
 # Dependências
 RUN apt-get update && apt-get install -y default-jdk && rm -rf /var/lib/apt/lists/*
 
-# Definir JAVA_HOME 
+# Instalar DuckDB via pip
+RUN pip install duckdb
+
+# Definir JAVA_HOME
 RUN export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
 ENV JAVA_HOME=$JAVA_HOME
 ENV PATH="$JAVA_HOME/bin:$PATH"
 
-# PySpark deve usar a mesma versão de Python no driver e worker
+# Garantir que PySpark use a mesma versão de Python no driver e worker
 ENV PYSPARK_PYTHON=python3.10
 ENV PYSPARK_DRIVER_PYTHON=python3.10
 

@@ -8,11 +8,12 @@ from faker import Faker
 fake = Faker()
 
 # Kafka configs
-kafka_config = {
-    "bootstrap.servers": "localhost:9092"  # Ajuste conforme necessário
+conf = {
+    'bootstrap.servers': 'kafka:9092',  # Alterando de localhost para kafka
+    'client.id': 'sensor-producer'
 }
 
-producer = Producer(kafka_config)
+producer = Producer(conf)
 topic = "iot_sensors"
 
 # data generation function
