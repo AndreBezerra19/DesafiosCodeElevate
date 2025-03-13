@@ -16,13 +16,13 @@ conf = {
 producer = Producer(conf)
 topic = "iot_sensors"
 
-# data generation function
+# gerar dados
 def generate_sensor_data():
     sensor_id = random.randint(1, 20)
     temperature = round(random.uniform(0.0, 40.0), 2)
     humidity = round(random.uniform(20.0, 80.0), 2)
     pressure = round(random.uniform(900, 1100), 2)
-    location = fake.city()  # make random city
+    location = fake.city() 
     
     data = {
         "sensor_id": sensor_id,
@@ -35,14 +35,14 @@ def generate_sensor_data():
     
     return json.dumps(data)
 
-# send data function
+# enviar dados para o kafka
 def send_to_kafka():
     while True:
         message = generate_sensor_data()
         producer.produce(topic, key=str(random.randint(1, 100)), value=message)
         producer.flush()
         print(f"Sent: {message}")
-        time.sleep(2)  # creates a gap between sensor readings
+        time.sleep(5)  # intervale entre as leituras
 
 if __name__ == "__main__":
     send_to_kafka()
