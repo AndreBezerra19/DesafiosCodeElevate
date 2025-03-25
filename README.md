@@ -60,7 +60,6 @@ Este projeto tem como objetivo criar um sistema de monitoramento de sensores IoT
 - Python
 - Apache Kafka
 - DuckDB
-- Airflow (orquestração - em desenvolvimento)
 - Docker (containerização)
 
 ####  Configuração do Ambiente e execução
