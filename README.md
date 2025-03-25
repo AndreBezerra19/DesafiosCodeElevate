@@ -53,7 +53,6 @@ Este projeto tem como objetivo criar um sistema de monitoramento de sensores IoT
 - **Producer**: gera dados simulados de sensores e os envia para um tópico no Kafka.
 - **Kafka**: gerencia e distribui os dados.
 - **Consumer**: recebe os dados do tópico Kafka e os armazena no banco de dados DuckDB.
-- **Airflow** *(em desenvolvimento)* será responsável por orquestrar e monitorar o fluxo de dados.
 - **Docker**: será utilizado para empacotar e facilitar a execução do projeto.
 
 #### 🔧 Tecnologias Utilizadas
