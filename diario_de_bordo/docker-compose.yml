@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  spark:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: diario_de_bordo_spark
+    volumes:
+      - ./data:/app/data
+    environment:
+      - SPARK_JARS=/app/jars/iceberg-spark-runtime-4.0.jar
+    command: ["python", "src/main.py"]

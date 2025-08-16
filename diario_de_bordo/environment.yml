@@ -1,0 +1,12 @@
+name: diario_de_bordo
+channels:
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pyspark=4.0
+  - pandas
+  - pyarrow
+  - openpyxl
+  - pip
+  - pip:
+      - loguru
